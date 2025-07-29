@@ -21,28 +21,28 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IEnumerable<Usuario>> Get()
         {
-            return await _usuarioService.ObterTodosUsuariosAsync();
+            return await _usuarioService.ObterTodos();
         }
 
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]
         public async Task<Usuario> Get(Guid id)
         {
-            return await _usuarioService.ObterUsuarioPorIdAsync(id);
+            return await _usuarioService.ObterPorId(id);
         }
 
         // POST api/<UsuarioController>
         [HttpPost]
         public async Task<bool> Post([FromBody] Usuario usuario)
         {
-            return await _usuarioService.AdicionarUsuarioAsync(usuario);
+            return await _usuarioService.Adicionar(usuario);
         }
 
         // PUT api/<UsuarioController>/5
         [HttpPut("{id}")]
         public async Task<bool> Put(Guid id, [FromBody] Usuario usuario)
         {
-            return await _usuarioService.AtualizarUsuarioAsync(id, usuario);
+            return await _usuarioService.Atualizar(id, usuario);
         }
 
         // DELETE api/<UsuarioController>/5
@@ -53,10 +53,10 @@ namespace API.Controllers
             {
                 throw new ArgumentException("ID do usuário inválido.");
             }
-            var usuario = await _usuarioService.ObterUsuarioPorIdAsync(Guid.Parse(id.ToString()));
+            var usuario = await _usuarioService.ObterPorId(Guid.Parse(id.ToString()));
             if (usuario != null)
             {
-                return await _usuarioService.ExcluirUsuarioAsync(usuario.Id);
+                return await _usuarioService.Excluir(usuario.Id);
             }
             else
             {

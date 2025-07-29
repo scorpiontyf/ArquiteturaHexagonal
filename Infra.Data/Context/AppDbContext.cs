@@ -15,5 +15,6 @@ namespace Infra.Data.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Transacao> Transacoes { get; set; }
     }
 }
