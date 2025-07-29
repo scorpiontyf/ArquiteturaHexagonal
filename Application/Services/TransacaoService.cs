@@ -1,11 +1,7 @@
 ﻿using Domain.Models;
 using Domain.Ports;
-using Infra.Data.Repository.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infra.Data.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
@@ -47,7 +43,7 @@ namespace Application.Services
             return true;
         }
 
-        public async Task<IEnumerable<transacao>> ObterTodos()
+        public async Task<IEnumerable<Transacao>> ObterTodos()
         {
             var Transacao = _transacaoRepository.ObterTodos();
             return await Transacao.ToListAsync();

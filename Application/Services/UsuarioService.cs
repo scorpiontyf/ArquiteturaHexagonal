@@ -1,9 +1,7 @@
 ﻿using Domain.Models;
 using Domain.Ports;
-using Infra.Data.Repository;
 using Infra.Data.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Application.Services
 {
