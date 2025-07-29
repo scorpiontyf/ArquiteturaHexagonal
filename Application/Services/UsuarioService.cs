@@ -15,7 +15,7 @@ namespace Application.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public async Task<bool> AdicionarUsuarioAsync(Usuario usuario)
+        public async Task<bool> Adicionar(Usuario usuario)
         {
             if (!usuario.ValidarUsuario())
                 throw new ArgumentException("Dados do usuário inválidos.");
@@ -23,7 +23,7 @@ namespace Application.Services
             return true;
         }
 
-        public async Task<bool> AtualizarUsuarioAsync(Guid id, Usuario usuario)
+        public async Task<bool> Atualizar(Guid id, Usuario usuario)
         {
             var usuarioAnterior = await _usuarioRepository.ObterPorId(t => t.Id == id);
             if (usuarioAnterior == null)
@@ -34,7 +34,7 @@ namespace Application.Services
             return true;
         }
 
-        public async Task<bool> ExcluirUsuarioAsync(Guid id)
+        public async Task<bool> Excluir(Guid id)
         {
             if (id == Guid.Empty)
                 throw new ArgumentException("ID do usuário inválido.");
@@ -45,13 +45,13 @@ namespace Application.Services
             return true;
         }
 
-        public async Task<IEnumerable<Usuario>> ObterTodosUsuariosAsync()
+        public async Task<IEnumerable<Usuario>> ObterTodos()
         {
             var usuario = _usuarioRepository.ObterTodos();
             return await usuario.ToListAsync();
         }
 
-        public async Task<Usuario> ObterUsuarioPorIdAsync(Guid id)
+        public async Task<Usuario> ObterPorId(Guid id)
         {
             if (id == Guid.Empty)
                 throw new ArgumentException("ID do usuário inválido.");
